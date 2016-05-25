@@ -11,10 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
+
+
+<div id='image_wraper'>
+<%= f.label :image, 'Add a pic?'%>
+<%= f.file_field :image, onchange: "readURL(this);" %>
+   <img id="img_prev" src="#" alt="your image" />
+</div>
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -24,6 +28,10 @@
     <%= f.text_area :body %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  %>
   </div>
+
+
 <% end %>
+
+ 
