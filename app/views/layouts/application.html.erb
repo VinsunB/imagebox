@@ -10,11 +10,28 @@
 
 </head>
 <body>
- 
+ <div= id="nav">
+ <div id="page_nav">
+<%= link_to "Index", root_path %>
+<%= link_to "About" %>
+<%= link_to "FAQs"%>
+<%= link_to "Contact" %>
+ </div>
+
+
+<div id="login_nav">
+<% if current_user %>
+<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<% else %>
+<%= link_to "Sign Up", new_user_registration_path %>
+<%= link_to "Login", new_user_session_path%>
+<% end %> 
+</div>
+</div>
  <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-
+<div id="main_wrap">
 <%= yield %>
-
+</div>
 </body>
 </html>

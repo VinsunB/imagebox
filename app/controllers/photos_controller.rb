@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
+before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destory] 
 
   respond_to :html
 
@@ -32,10 +33,14 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+ if current_user == nil || false
+ flash[:notice] = "You need to be sign in"
+  redirect_to new_user_session_path
+else
     @photo.destroy
     respond_with(@photo)
   end
-
+end
   private
     def set_photo
       @photo = Photo.find(params[:id])
